@@ -1,0 +1,25 @@
+import LoginLibrary as gmail
+import xlwt
+import pdb
+path="C:\\Users\\User\\Desktop\\Ping_Excel\\gamilsheet.xlsx"
+
+# path="C:\\Users\\User\\Desktop\\Ping_Extension\\TestExtData.xlsx"
+#path = Path("..\excel_file\TestExtData.xlsx")
+sheetname="URL"
+#Reading URL from file
+url_info= gmail.ReadExcel(path, sheetname)
+#Browser=str(url_info[0][0])
+URL=str(url_info[0][0])
+sheetname1="User"
+# gmail.driverinfo(Browser)
+gmail.init_browser(URL)
+k=0
+user_info= gmail.ReadExcel(path,sheetname1)
+for k in range(len(user_info)):
+    uname=str(user_info[k][0])
+    pwd=str(user_info[k][1])
+    #Reading Alert Sheet from file
+    #alert_info= Ping.ReadExcel(path,sheetname2)
+    gmail.Login(uname,pwd)
+    j=0
+    # a=alert_info
